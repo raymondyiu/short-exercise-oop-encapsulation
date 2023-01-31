@@ -4,11 +4,30 @@ import java.text.MessageFormat;
 
 public class WeatherReporter {
 
-    public String location;
-    public double temperature;
+    private String location;
+    private double temperature;
+
+    private final String EMOJI_SUN_BEHIND_RAINCLOUD="🌦";
+    private final String EMOJI_SUN_RISE="🌅";
+    private final String EMOJI_SUN_BEHIND_SMALL_CLOUD="🌤";
+    private final String EMOJI_HIGH_BRIGHTNESS="🔆";
+    private final String EMOJI_HOT_FACE="🥵";
+    private final String EMOJI_COLD_FACE="🥶";
+    private final String EMOJI_SMILING_FACE="😊";
+    private final int HOT_TEMPERATURE=30;
+    private final int COLD_TEMPERATURE=10;
+
 
     public WeatherReporter(String location, double temperature) {
         this.location = location;
+        this.temperature = temperature;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setTemperature(double temperature) {
         this.temperature = temperature;
     }
 
@@ -20,33 +39,33 @@ public class WeatherReporter {
     }
 
     public String check1() {
-        if (location == "London") {
+        if (location.equals("London")) {
 
-            return "🌦";
+            return EMOJI_SUN_BEHIND_RAINCLOUD;
 
-        } else if (location == "California") {
+        } else if (location.equals("California")) {
 
-            return "🌅";
+            return EMOJI_SUN_RISE;
 
-        } else if (location == "Cape Town") {
+        } else if (location.equals("Cape Town")) {
 
-            return "🌤";
+            return EMOJI_SUN_BEHIND_SMALL_CLOUD;
 
         }
-        return "🔆";
+        return EMOJI_HIGH_BRIGHTNESS;
     }
 
     public String check2() {
-        if (temperature > 30) {
+        if (temperature > HOT_TEMPERATURE) {
 
-            return "It's too hot 🥵!";
+            return String.format("It's too hot %s!", EMOJI_HOT_FACE);
 
-        } else if (temperature < 10) {
+        } else if (temperature < COLD_TEMPERATURE) {
 
-            return "It's too cold 🥶!";
+            return String.format("It's too cold %s!", EMOJI_COLD_FACE);
 
         }
-        return "Ahhh...it's just right 😊!";
+        return String.format("Ahhh...it's just right %s", EMOJI_SMILING_FACE);
     }
 
 }
