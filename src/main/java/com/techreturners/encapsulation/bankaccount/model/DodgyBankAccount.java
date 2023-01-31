@@ -2,9 +2,9 @@ package com.techreturners.encapsulation.bankaccount.model;
 
 public class DodgyBankAccount {
 
-    public String accountNumber;
-    public int accountBalance;
-    public int rewardAmount = 50;
+    public String accountNumber; // use private final, once it is constructed, it should not be changed
+    public int accountBalance; // use private to hidden the accountBalance
+    public int rewardAmount = 50; // use private final, once it is constructed, it should not be changed
 
     public DodgyBankAccount(String accountNumber) {
         this.accountNumber = accountNumber;
